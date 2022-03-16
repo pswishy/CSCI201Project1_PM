@@ -11,13 +11,15 @@ main:
       addi $t3, $0, 26 # constant 26 = t3
       add $t4, $t2, $t3 
       sub $t4, $t4, 1 # $t4 = 33 i.e max range for string values
+      li $t5, 0 # sum variable stored in $t5
+      li $t6, 0 # iterator variable in $t6
 
       li $v0, 8  # gets user input from keyboard
       la $a0, userInput # stores user in put in $a0
       li $a1, 11 # max lengeth of user input string
       syscall
-     
-      
+while:
+      beq $t6, 10, exit
       # li $v0, 4
       # la $a0 0($a0) # 0 = hello67890
       # syscall
@@ -31,14 +33,14 @@ main:
       # syscall
 
       # li $v0, 4
-      # la $a0 10($a0) # 10 = nothing
+      # la $a0 10($a0) # 10 = nothing / null
       # syscall
 
-      li $v0, 4
-      la $a0 9($a0) # 9 = 0
-      syscall
+      # li $v0, 4
+      # la $a0 9($a0) # 9 = 0
+      # syscall
 
 
-      
+exit:      
       li $v0,10
       syscall
