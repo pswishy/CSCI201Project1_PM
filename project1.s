@@ -13,20 +13,27 @@ main:
       sub $t4, $t4, 1 # $t4 = 33 i.e max range for string values
       li $t5, 0 # sum variable stored in $t5
       li $t6, 0 # iterator variable in $t6
-
+      li $t7, 1 # offset variable
       li $v0, 8  # gets user input from keyboard
       la $a0, userInput # stores user in put in $a0
       li $a1, 11 # max lengeth of user input string
       syscall
+
 while:
-      beq $t6, 10, exit
+      beq $t6, 10, exit # if $t6 = 10 then exit
+      
+      # beq $s0, '1' , one_branch # if char in $a0 = '0'
       # li $v0, 4
       # la $a0 0($a0) # 0 = hello67890
       # syscall
-
-      # li $v0, 4
-      # la $a0 1($a0) # 1 = ello67890
-      # syscall
+one_branch:
+     add $t5, $t5, 1
+     # li $v0, 4
+     # la $a0, $t5
+     # syscall
+       # li $v0, 4
+       # la $a0 1($a0) # 1 = ello67890
+       # syscall
 
       # li $v0, 4
       # la $a0 2($a0) # 2 = llo67890
@@ -41,6 +48,6 @@ while:
       # syscall
 
 
-exit:      
+# exit:      
       li $v0,10
       syscall
