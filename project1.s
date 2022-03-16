@@ -17,9 +17,16 @@ main:
       li $a1, 11 # max lengeth of user input string
       syscall
 
+        # print user input test
       li $v0, 4
       la $a0, userInput
       syscall
+
+        # print user input index 0 test
+      la $t5, userInput
+      li $v0, 4
+      la $t5 0($t5)
+
 
       
       li $v0,10
