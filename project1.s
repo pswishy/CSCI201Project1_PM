@@ -36,7 +36,10 @@ while:
       # syscall
 
       blt $s1, 65, skipchar # 65 = 'A' in ascii. if char < 65 skip
-      ble $s1, 87, sumlet # 87 = 'W' in ascii. if char <= 87 add to sum. >87 not in range
+      ble $s1, 87, sumCapitallet # 87 = 'W' in ascii. if char <= 87 add to sum. >87 not in range
+
+      blt $s1, 97, skipchar # 'a' = 97 in ascii. if char < 97 skip it
+      ble $s1, 119, sumlowlet # 'w' in ascii = 119. if char <= 119 add it to sum
       j while
 
 skipchar:
@@ -52,7 +55,7 @@ sumnum:
       addi $t1, $t1, 1
       j while
 
-sumlet: 
+sumCapitallet: 
       sub $s1, $s1, 55
       add $t0, $t0, $s1
       sub $s1, $s1, $s1
@@ -60,6 +63,9 @@ sumlet:
       addi $t1, $t1, 1 # increment loop break
       j while
 
+sumlowlet:
+
+      sub $s1, $s1, 87 # subtract 87 to get correct sum key value a = 10 so 'a'/97 - 87 = 10
 
 
 
