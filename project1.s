@@ -37,7 +37,7 @@ while:
 
 skipchar:
       addi $t9, $t9, 1 # increment byte addres by 1
-      addi $t1, $t1, 10
+      addi $t1, $t1, 1
       
 sumnum:
       sub $s1, $s1, 48 # s1 = s1 - 48/ subtract 48 to get correct final sum val
@@ -50,6 +50,10 @@ sumnum:
 
 
 exit:
+      move $a0, $t0
+      li $v0, 1
+      syscall
+
       li $v0, 10
       syscall
       # beq $t6, 10, exit # if $t6 = 10 then exit
