@@ -25,10 +25,24 @@ main:
       li $t0, 0 # sum variable stored in $t0
       li $t1, 0 # iterator variable
       la $t9, userInput
+
+
+      lb $s1, 0($t9) # lb load first char in $s1
+      beq $t1, 10, exit
+
+      blt $s1, 48, skipchar # 48 = '0' in ascii. if char < 48 skip it 
+      ble $s1, 57, sumnum # 57 = '9' in ascii. if char <= 57 add it to sum
+
+
+skipchar:
       
-      lb $s1, 0($t9)
+sumnum:
+      sub $s1, $s1, 48 # s1 = s1 - 48/ subtract 48 to get correct final sum val
+      add $t5, $t5, $s1
 
 
+
+exit:
       li $v0, 10
       syscall
       # beq $t6, 10, exit # if $t6 = 10 then exit
