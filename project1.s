@@ -1,4 +1,5 @@
 .data
+
 userInput:  .space 11 # allow user to input string of 11 characters
 
 .text
@@ -32,7 +33,10 @@ while:
 
       blt $s1, 48, skipchar # 48 = '0' in ascii. if char < 48 skip it 
       ble $s1, 57, sumnum # 57 = '9' in ascii. if char <= 57 add it to sum
-      syscall
+      # syscall
+
+      blt $s1, 65, skipchar # 65 = 'A' in ascii. if char < 65 skip
+      ble $s1, 87, sumlet # 87 = 'W' in ascii. if char <= 87 add to sum. >87 not in range
       j while
 
 skipchar:
@@ -47,9 +51,11 @@ sumnum:
       addi $t1, $t1, 1
       j while
 
+sumlet: 
 
 
 exit:
+
       move $a0, $t0
       li $v0, 1
       syscall
