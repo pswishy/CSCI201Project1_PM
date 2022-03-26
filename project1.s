@@ -42,6 +42,7 @@ while:
 skipchar:
       addi $t9, $t9, 1 # increment byte addres by 1
       addi $t1, $t1, 1
+      j while
       
 sumnum:
       sub $s1, $s1, 48 # s1 = s1 - 48/ subtract 48 to get correct final sum val
@@ -52,6 +53,14 @@ sumnum:
       j while
 
 sumlet: 
+      sub $s1, $s1, 55
+      add $t0, $t0, $s1
+      sub $s1, $s1, $s1
+      addi $t9, $t9, 1 # increment address for loop
+      addi $t1, $t1, 1 # increment loop break
+      j while
+
+
 
 
 exit:
