@@ -1,5 +1,5 @@
 .data
-newLine: .asciiz "\nOutput: "
+# newLine: .asciiz "\nOutput: "
 userInput:  .space 11 # allow user to input string of 11 characters
 
 .text
@@ -63,9 +63,9 @@ sumlowlet:
 
 
 exit:
-      li $v0, 4
-      la $a0, newLine
-      syscall
+      # li $v0, 4
+      # la $a0, newLine
+      # syscall
 
       move $a0, $t0
       li $v0, 1
